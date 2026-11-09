@@ -9,9 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="antialiased h-full flex bg-[#EBF3FDff] scrollbar-none">
-    <header
-        class="flex flex-col bg-[#B4C9F3ff] w-[70px] h-full items-center justify-between  text-center p-[10px] gap-[20px] fixed mr-[70px]">
+<body class="w-full h-full flex bg-[#EBF3FDff] scrollbar-none">
+    <header class="flex flex-col bg-[#B4C9F3ff] w-[70px] h-full items-center justify-between  text-center p-[10px] gap-[20px] fixed ">
         <div class="">
             <img src="./assets/img/logo_sidebar.png" alt="" width="42px" height="42px" class="m-auto mb-[20px]">
             <nav class="flex flex-col gap-[10px] ">
@@ -106,8 +105,17 @@
             </button>
         </div>
     </header>
-    <section class="p-[30px] overscroll-y-auto ml-[70px]">
-        <h1>haaaaaaa</h1>
+    <section class="p-[30px] overscroll-y-auto ml-[70px] w-full">
+        <div class="flex justify-between w-full mb-[30px] pb-[15px] border-b border-[#6F41EAff] my-4">
+            <h1 class="text-[40px] text-[#6F41EAff] font-bold">Dashboard</h1>
+            <button class=" mt-[10px] text-[15px] text-[#EBF3FDff] bg-[#6F41EAff] h-[auto] w-[auto] p-[10px] rounded-lg translate-[0.3s] hover:scale-[1.1]"> Cree nouvelle projet </button>
+        </div>
+        <div class="w-full">
+            <h2 class="text-[25px] text-[#6F41EAff] font-bold mb-[20px]">Votre projets :</h2>
+            <div class=" flex">
+                <p class="m-auto text-[15px] text-[#06255Bff]">« Aucun projet pour le moment, créez-en un pour générer votre premier plan. »</p>
+            </div>
+        </div>
     </section>
 </body>
 
