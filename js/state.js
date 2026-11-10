@@ -4,13 +4,14 @@ export function api() {
     const valide = document.querySelector("#valide");
     const annuler = document.querySelector("#annuler");
     const input = document.querySelector("#key");
+    const show = document.querySelector("#show");
     const key_api_dialog = document.querySelector("#key_api_dialog");
     valide.addEventListener("click", (e) => {
         // e.defaultPrevented();
         let keyy = input.value;
         if (keyy.length != 0) {
             sessionStorage.setItem("key_api", keyy);
-            console.log("voila : ", sessionStorage.getItem("key_api"));  
+            console.log("voila : ", sessionStorage.getItem("key_api"));
             key_api_dialog.remove();
         } else {
             const p = document.createElement("p");
@@ -26,5 +27,13 @@ export function api() {
 
     annuler.addEventListener("click", (e) => {
         key_api_dialog.remove();
+    })
+
+    show.addEventListener("click", () => {
+        if (input.type === "password") {
+            input.type = "text";
+        }else if (input.type = "text"){
+            input.type = "password";
+        }
     })
 }

@@ -28,6 +28,7 @@ export function dialog_setting(){
 
     show.type = "checkbox";
     show.className = "accent-[#6F41EAff]";
+    show.id = "show"
 
     div.className = "flex items-center justify-between mt-[20px]"
 
