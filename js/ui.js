@@ -1,5 +1,6 @@
 // page js :  de gestion tout qui est cote de UI/UX :
 
+// function UI de dialog setting :
 export function dialog_setting(){
     const dialog = document.createElement("dialog");
     const titre = document.createElement("h2");
@@ -51,4 +52,64 @@ export function dialog_setting(){
 
     const key_api_dialog = document.querySelector("#key_api_dialog");
     key_api_dialog.showModal();
+}
+
+// functions ui de multi submit : 
+export function tab_show(n){
+    const tab = document.getElementsByClassName("tab");
+    const Retour =  document.querySelector("#Retour");
+    const Suivant = document.querySelector("#Suivant");
+    const step = document.getElementsByClassName("step");
+
+    for(let i=0 ; i < tab.length; i++){
+        tab[i].classList.toggle("hidden", i!== n);
+    }
+
+    Retour.classList.toggle("hidden", n === 0);
+    if(n === tab.length - 1 ){
+        Suivant.textContent = "Submit";
+    }
+    
+
+    step[n].className = step[n].className.replace("opacity-[0.5]", "");
+
+}
+
+export function validation(n){
+    const tab = document.getElementsByClassName("tab");
+    const step = document.getElementsByClassName("step");
+    const champs = tab[n].querySelectorAll("input, textarea, select");
+    let valide = true;
+
+    champs.forEach((champ) => {
+        if(champ.value.trim() === ""){
+            champ.classList.remove("borrder-[#6F41EAff]");
+            champ.classList.add("border-[#FB708C]");
+            setTimeout(() => {
+                champ.classList.remove("border-[#FB708C]]");
+                champ.classList.add("border-[#6F41EAff]");
+            }, 4000);
+            valide = false ;
+        }
+    })
+
+    if(valide){
+        console.log(step[n]);
+        step[n].classList.remove("opacity-[0.5]");
+        step[n].classList.add("opacity-[1]");
+    }
+    return valide ;
+}
+
+export function btn_form (n, bool, currentTab, form){
+    const  tab = document.getElementsByClassName("tab");
+    if (n == 1 && bool === false) return currentTab;
+    let next = currentTab + n;
+    if (next < 0 ) return currentTab ;
+    if (next >= tab.length){
+        form.requestSubmit();
+        return currentTab;
+    }
+    tab_show(next);
+    return next ;
 }
