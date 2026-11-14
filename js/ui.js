@@ -54,7 +54,9 @@ export function dialog_setting(){
     key_api_dialog.showModal();
 }
 
-// functions ui de multi submit : 
+
+//// UI de part de formulaire :
+// ui de part qui doit affiche : 
 export function tab_show(n){
     const tab = document.getElementsByClassName("tab");
     const Retour =  document.querySelector("#Retour");
@@ -75,6 +77,8 @@ export function tab_show(n){
 
 }
 
+
+// part de validation de form : 
 export function validation(n){
     const tab = document.getElementsByClassName("tab");
     const step = document.getElementsByClassName("step");
@@ -112,4 +116,56 @@ export function btn_form (n, bool, currentTab, form){
     }
     tab_show(next);
     return next ;
+}
+
+
+// affiche les project : 
+
+export async function affiche_projet(getAll){
+    const data = await getAll() || [];
+    console.log(data);
+    
+    const projet = document.querySelector("#projet");
+    projet.textContent = ""
+    if(data.length === 0){
+        const p = document.createElement("p");
+        p.textContent = "« Aucun projet pour le moment, créez-en un pour générer votre premier plan. »";
+        p.className = "m-auto text-[15px] text-[#06255Bff]";
+        projet.appendChild(p);
+    }else {
+        for(const element of data){
+            const div = document.createElement("div");
+            const titre = document.createElement("h3");
+            const desc = document.createElement("p")
+            const div_btn = document.createElement("div");
+            const btn_open = document.createElement("button");
+            const btn_delete = document.createElement("button");
+
+            projet.className = "grid-cols-3 grid m-10 mx-40 gap-10"
+
+            div.className = "flex flex-col justify-start items-start gap-5 border-[#6F41EAff] border-[1px]  rounded-lg p-7";
+
+            titre.textContent = element.projectName ;
+            titre.className = "text-[20px] text-[#6F41EAff] font-bold"
+
+            desc.textContent = element.description ;
+            desc.className = "text-[13px] text-[#06255Bff]"
+
+            div_btn.className = "flex  flex-row justify-end gap-4";
+
+            btn_open.textContent = "Ouvrir";
+            btn_open.className = "text-[15px] text-[#EBF3FDff] text-center bg-[#6F41EAff] h-[auto] w-[100px] p-[10px] border-[#EBF3FDff] rounded-lg"; 
+
+            btn_delete.textContent = "Supprimer";
+            btn_delete.className = "text-[15px] text-[#6F41EAff] text-center bg-[#EBF3FDff] h-[auto] w-[100px] p-[10px]  border-[#6F41EAff] border-[1px]  rounded-lg ";
+
+            div_btn.appendChild(btn_delete);
+            div_btn.appendChild(btn_open);
+
+            div.appendChild(titre);
+            div.appendChild(desc);
+            div.appendChild(div_btn);
+            projet.appendChild(div);
+        }
+    }
 }

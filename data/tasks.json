@@ -1,0 +1,1393 @@
+[
+  {
+    "id": "TASK-001",
+    "projectId": 1,
+    "title": "Set up the project and repository",
+    "description": "Initialize the Git repository, the React front-end and the Node.js/Express back-end. Configure ESLint, Prettier, environment variables and a shared folder structure.",
+    "userStories": [
+      "As a developer, I want a clean project structure so that the team can work without conflicts."
+    ],
+    "acceptanceCriteria": [
+      "The front-end and back-end start with a single command.",
+      "Linting and formatting rules are shared.",
+      "A .env.example file documents all variables."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "S",
+    "estimatedTime": 8,
+    "deadline": "Day 2",
+    "status": "To Do",
+    "dependencies": []
+  },
+  {
+    "id": "TASK-002",
+    "projectId": 1,
+    "title": "Design the MongoDB schemas",
+    "description": "Define the Mongoose models for users, boards, columns, tasks, comments and notifications, with relations, indexes and validation rules.",
+    "userStories": [
+      "As a developer, I want well-defined data models so that the API stays consistent."
+    ],
+    "acceptanceCriteria": [
+      "All models include validation and timestamps.",
+      "Indexes exist on frequently queried fields.",
+      "A seed script fills the database with sample data."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 10,
+    "deadline": "Day 4",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "projectId": 1,
+    "title": "Build the authentication API",
+    "description": "Implement register, login, logout and password reset endpoints with JWT, password hashing and role-based middleware (admin, member, guest).",
+    "userStories": [
+      "As a user, I want to create an account and log in securely so that my projects stay private."
+    ],
+    "acceptanceCriteria": [
+      "Passwords are hashed and never returned by the API.",
+      "Protected routes reject requests without a valid token.",
+      "Roles restrict access to admin-only actions."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 14,
+    "deadline": "Day 7",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "projectId": 1,
+    "title": "Create the authentication screens",
+    "description": "Build the register, login and reset password pages in React with form validation, error messages and token storage.",
+    "userStories": [
+      "As a user, I want clear login and signup forms so that I can access the application quickly."
+    ],
+    "acceptanceCriteria": [
+      "Invalid fields display an error message.",
+      "A successful login redirects to the dashboard.",
+      "The pages are usable on mobile."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 10,
+    "deadline": "Day 9",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-005",
+    "projectId": 1,
+    "title": "Develop the boards and columns API",
+    "description": "Create REST endpoints to create, update, archive and share boards, and to manage customizable columns and card ordering.",
+    "userStories": [
+      "As a team lead, I want to create boards and columns so that I can organize my team's workflow."
+    ],
+    "acceptanceCriteria": [
+      "A board can be created, renamed, archived and shared.",
+      "Columns can be added, renamed and reordered.",
+      "Only board members can read or modify a board."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 14,
+    "deadline": "Day 12",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-006",
+    "projectId": 1,
+    "title": "Build the Kanban board interface",
+    "description": "Display boards with columns and task cards, including title, priority, due date, labels and assignees. Add task creation and edition forms.",
+    "userStories": [
+      "As a user, I want to see my tasks in a board so that I can follow the progress of my project."
+    ],
+    "acceptanceCriteria": [
+      "Columns and cards are displayed from API data.",
+      "A task can be created and edited from the interface.",
+      "The layout is responsive."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 16,
+    "deadline": "Day 16",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004",
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-007",
+    "projectId": 1,
+    "title": "Add drag & drop with real-time updates",
+    "description": "Implement card movement between columns and synchronize changes for all connected users with WebSocket (Socket.IO).",
+    "userStories": [
+      "As a user, I want to drag a card to another column so that I can update its status instantly."
+    ],
+    "acceptanceCriteria": [
+      "Cards can be moved between and inside columns.",
+      "Other connected users see the change without refreshing.",
+      "The order is saved after a page reload."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 16,
+    "deadline": "Day 20",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-006"
+    ]
+  },
+  {
+    "id": "TASK-008",
+    "projectId": 1,
+    "title": "Implement assignment and comments",
+    "description": "Allow assigning one or several members to a task, filtering by member, commenting on a card and viewing the activity history.",
+    "userStories": [
+      "As a team member, I want to comment on a task so that I can discuss it with my colleagues."
+    ],
+    "acceptanceCriteria": [
+      "Tasks can be assigned to several members.",
+      "Comments appear in chronological order.",
+      "Every modification is recorded in the activity log."
+    ],
+    "priority": "Medium",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 12,
+    "deadline": "Day 23",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-009",
+    "projectId": 1,
+    "title": "Create the notification system",
+    "description": "Send in-app and e-mail notifications on assignment, mention and approaching deadline, with a notification center and read/unread state.",
+    "userStories": [
+      "As a user, I want to be notified when a task is assigned to me so that I never miss my work."
+    ],
+    "acceptanceCriteria": [
+      "Notifications are triggered by assignment, mention and deadline.",
+      "Notifications can be marked as read.",
+      "E-mails are sent through a configurable provider."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "M",
+    "estimatedTime": 10,
+    "deadline": "Day 26",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-008"
+    ]
+  },
+  {
+    "id": "TASK-010",
+    "projectId": 1,
+    "title": "Build the statistics dashboard",
+    "description": "Show completed, late and remaining tasks, plus workload per member, with charts and filters by period.",
+    "userStories": [
+      "As a manager, I want to see statistics about my project so that I can detect delays early."
+    ],
+    "acceptanceCriteria": [
+      "Charts display completed, late and remaining tasks.",
+      "Workload per member is visible.",
+      "Filters by period update the charts."
+    ],
+    "priority": "Low",
+    "importance": "Medium",
+    "size": "M",
+    "estimatedTime": 8,
+    "deadline": "Day 27",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-008"
+    ]
+  },
+  {
+    "id": "TASK-011",
+    "projectId": 1,
+    "title": "Write tests and API documentation",
+    "description": "Add unit and integration tests for critical routes and components, and document all endpoints with Swagger.",
+    "userStories": [
+      "As a developer, I want automated tests and documentation so that the project stays maintainable."
+    ],
+    "acceptanceCriteria": [
+      "Critical routes are covered by tests.",
+      "Swagger lists every endpoint with examples.",
+      "All tests pass in the CI pipeline."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 12,
+    "deadline": "Day 29",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-007",
+      "TASK-009",
+      "TASK-010"
+    ]
+  },
+  {
+    "id": "TASK-012",
+    "projectId": 1,
+    "title": "Deploy the application and prepare the demo",
+    "description": "Deploy front-end and back-end online, configure environment variables and write the user guide and final presentation.",
+    "userStories": [
+      "As a stakeholder, I want an online version so that I can try the application."
+    ],
+    "acceptanceCriteria": [
+      "The application is accessible through a public URL.",
+      "A user guide is delivered.",
+      "A 15-minute demo scenario is prepared."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 8,
+    "deadline": "Day 30",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-011"
+    ]
+  },
+  {
+    "id": "TASK-001",
+    "projectId": 2,
+    "title": "Set up the project and design tokens",
+    "description": "Create the repository and the HTML/CSS/JS structure. Define colors, fonts, spacing and breakpoints as CSS variables.",
+    "userStories": [
+      "As a visitor, I want a consistent look so that the site feels professional."
+    ],
+    "acceptanceCriteria": [
+      "The folder structure is created.",
+      "Colors and fonts are defined as CSS variables.",
+      "A mobile-first base stylesheet exists."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "S",
+    "estimatedTime": 3,
+    "deadline": "Day 1",
+    "status": "To Do",
+    "dependencies": []
+  },
+  {
+    "id": "TASK-002",
+    "projectId": 2,
+    "title": "Build the header, navigation and footer",
+    "description": "Create a fixed navigation bar with smooth scrolling, a burger menu on mobile and a footer with social links.",
+    "userStories": [
+      "As a visitor, I want a clear menu so that I can reach any section easily."
+    ],
+    "acceptanceCriteria": [
+      "The navigation stays visible while scrolling.",
+      "The burger menu works on mobile.",
+      "Footer links point to GitHub and LinkedIn."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 5,
+    "deadline": "Day 2",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "projectId": 2,
+    "title": "Create the home page",
+    "description": "Build the hero section with photo, professional title, short introduction and a call-to-action button to the projects section.",
+    "userStories": [
+      "As a recruiter, I want a strong first impression so that I want to learn more."
+    ],
+    "acceptanceCriteria": [
+      "The hero section is displayed above the fold.",
+      "The call-to-action scrolls to the projects.",
+      "Images are optimized."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "S",
+    "estimatedTime": 4,
+    "deadline": "Day 3",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "projectId": 2,
+    "title": "Create the About section",
+    "description": "Write and display the career path, education, interests and key skills with icons or progress bars.",
+    "userStories": [
+      "As a recruiter, I want to read about the candidate's skills so that I can evaluate the profile."
+    ],
+    "acceptanceCriteria": [
+      "Education and career are listed clearly.",
+      "Skills are displayed visually.",
+      "The section is readable on all screens."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "S",
+    "estimatedTime": 4,
+    "deadline": "Day 4",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-005",
+    "projectId": 2,
+    "title": "Build the projects gallery",
+    "description": "Render project cards generated from a JavaScript array with image, title, description, technologies and links to source and demo.",
+    "userStories": [
+      "As a recruiter, I want to browse the projects so that I can see real work."
+    ],
+    "acceptanceCriteria": [
+      "Cards are generated from data with JavaScript.",
+      "Each card has links to code and demo.",
+      "The grid adapts to the screen size."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 6,
+    "deadline": "Day 6",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-006",
+    "projectId": 2,
+    "title": "Create the contact form with validation",
+    "description": "Build a form (name, email, message) with client-side validation using regular expressions and a confirmation message.",
+    "userStories": [
+      "As a visitor, I want to send a message so that I can contact the developer."
+    ],
+    "acceptanceCriteria": [
+      "Invalid fields show an error under the input.",
+      "The submit button is disabled while the form is invalid.",
+      "A confirmation is shown after submission."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "M",
+    "estimatedTime": 5,
+    "deadline": "Day 7",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-007",
+    "projectId": 2,
+    "title": "Add dark mode",
+    "description": "Implement a light/dark theme toggle based on CSS variables, saved in localStorage and detecting system preference by default.",
+    "userStories": [
+      "As a visitor, I want a dark mode so that I can read comfortably at night."
+    ],
+    "acceptanceCriteria": [
+      "The toggle switches the theme instantly.",
+      "The choice is kept after reload.",
+      "Contrast stays accessible in both themes."
+    ],
+    "priority": "Low",
+    "importance": "Low",
+    "size": "S",
+    "estimatedTime": 3,
+    "deadline": "Day 8",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-008",
+    "projectId": 2,
+    "title": "Run the responsive and accessibility audit",
+    "description": "Test all breakpoints, check semantic HTML, alt attributes and contrasts, and reach a Lighthouse score above 90.",
+    "userStories": [
+      "As a visitor with a disability, I want an accessible site so that I can use it without barriers."
+    ],
+    "acceptanceCriteria": [
+      "Lighthouse performance and accessibility are above 90.",
+      "All images have alt text.",
+      "Keyboard navigation works everywhere."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 5,
+    "deadline": "Day 9",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003",
+      "TASK-004",
+      "TASK-005",
+      "TASK-006",
+      "TASK-007"
+    ]
+  },
+  {
+    "id": "TASK-009",
+    "projectId": 2,
+    "title": "Deploy and write the README",
+    "description": "Publish the site on GitHub Pages or Netlify and write a README with screenshots and setup instructions.",
+    "userStories": [
+      "As a recruiter, I want a public link so that I can open the portfolio."
+    ],
+    "acceptanceCriteria": [
+      "The site is online.",
+      "The README explains how to run the project.",
+      "The link is added to the GitHub profile."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "XS",
+    "estimatedTime": 2,
+    "deadline": "Day 10",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-008"
+    ]
+  },
+  {
+    "id": "TASK-001",
+    "projectId": 3,
+    "title": "Define the architecture and set up the monorepo",
+    "description": "Document the target architecture, set up the monorepo (Next.js, NestJS), Docker Compose for local services and coding conventions.",
+    "userStories": [
+      "As a developer, I want a clear architecture so that five people can work in parallel."
+    ],
+    "acceptanceCriteria": [
+      "An architecture diagram is committed.",
+      "The whole stack starts with docker compose up.",
+      "Conventions and branching strategy are documented."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 5",
+    "status": "To Do",
+    "dependencies": []
+  },
+  {
+    "id": "TASK-002",
+    "projectId": 3,
+    "title": "Design the PostgreSQL schema and migrations",
+    "description": "Model products, variants, categories, users, orders, payments and stock movements. Write migrations, indexes and seed data.",
+    "userStories": [
+      "As a developer, I want a reliable data model so that orders and stock stay consistent."
+    ],
+    "acceptanceCriteria": [
+      "All tables are created by migrations.",
+      "Foreign keys and indexes are defined.",
+      "Seed data generates a realistic catalog."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 20,
+    "deadline": "Day 10",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "projectId": 3,
+    "title": "Implement authentication and roles",
+    "description": "Build signup, login (email and social), JWT refresh, password reset and role-based guards for admin, stock manager and support.",
+    "userStories": [
+      "As a customer, I want to log in securely so that I can see my orders."
+    ],
+    "acceptanceCriteria": [
+      "Social and email login work.",
+      "Guards block unauthorized roles.",
+      "Tokens are refreshed securely."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 18",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "projectId": 3,
+    "title": "Build the catalog API",
+    "description": "Create endpoints for products, categories and variants with search, filters, sorting and pagination, plus CSV import for admins.",
+    "userStories": [
+      "As a customer, I want to filter products so that I can find what I need quickly."
+    ],
+    "acceptanceCriteria": [
+      "Filters by category, price, brand and availability work.",
+      "Pagination and sorting are supported.",
+      "CSV import reports invalid rows."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 32,
+    "deadline": "Day 28",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-005",
+    "projectId": 3,
+    "title": "Create the catalog pages",
+    "description": "Build the product listing page with server-side rendering, search bar, filters, sorting and pagination for SEO and performance.",
+    "userStories": [
+      "As a customer, I want a fast catalog so that I can browse many products easily."
+    ],
+    "acceptanceCriteria": [
+      "The listing is server-side rendered.",
+      "Filters update the URL and results.",
+      "The page is responsive."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 38",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-006",
+    "projectId": 3,
+    "title": "Create the product page with variants and reviews",
+    "description": "Display image gallery, size/color variants, real-time stock and customer reviews with ratings.",
+    "userStories": [
+      "As a customer, I want to choose a size and color so that I get the right product."
+    ],
+    "acceptanceCriteria": [
+      "Variants update price and stock.",
+      "Out-of-stock variants cannot be added to the cart.",
+      "Customers can post a review after purchase."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 20,
+    "deadline": "Day 45",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-007",
+    "projectId": 3,
+    "title": "Implement the shopping cart",
+    "description": "Add, remove and update quantities, apply promotion codes, compute taxes and shipping, and persist the cart across sessions.",
+    "userStories": [
+      "As a customer, I want my cart saved so that I can come back later."
+    ],
+    "acceptanceCriteria": [
+      "Quantities and totals update instantly.",
+      "Promotion codes are validated by the server.",
+      "The cart persists after logout and login."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 52",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004",
+      "TASK-006"
+    ]
+  },
+  {
+    "id": "TASK-008",
+    "projectId": 3,
+    "title": "Integrate Stripe payments",
+    "description": "Implement checkout with Stripe, webhooks for payment status, order confirmation emails and refund handling.",
+    "userStories": [
+      "As a customer, I want to pay securely online so that I can complete my purchase."
+    ],
+    "acceptanceCriteria": [
+      "Payments are processed through Stripe.",
+      "Webhooks update the order status.",
+      "A confirmation email is sent."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 36,
+    "deadline": "Day 62",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003",
+      "TASK-007"
+    ]
+  },
+  {
+    "id": "TASK-009",
+    "projectId": 3,
+    "title": "Build order management and PDF invoices",
+    "description": "Create order statuses (paid, shipped, delivered, refunded), tracking numbers and automatic PDF invoice generation.",
+    "userStories": [
+      "As an administrator, I want to manage order statuses so that customers are informed."
+    ],
+    "acceptanceCriteria": [
+      "Statuses can be updated by authorized roles.",
+      "Invoices are generated in PDF.",
+      "Customers see their order history."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 70",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-008"
+    ]
+  },
+  {
+    "id": "TASK-010",
+    "projectId": 3,
+    "title": "Develop the admin dashboard",
+    "description": "Build the back-office for products, stock alerts, customers, roles and sales statistics (revenue, best sellers, conversion, abandoned carts).",
+    "userStories": [
+      "As a manager, I want sales statistics so that I can make business decisions."
+    ],
+    "acceptanceCriteria": [
+      "Stock alerts appear on low inventory.",
+      "Charts show revenue and best sellers.",
+      "Access depends on the user role."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 40,
+    "deadline": "Day 78",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003",
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-011",
+    "projectId": 3,
+    "title": "Add Redis caching and performance optimization",
+    "description": "Cache catalog queries and sessions with Redis, optimize images and SQL queries, and run load tests.",
+    "userStories": [
+      "As a customer, I want pages to load quickly so that I do not leave the site."
+    ],
+    "acceptanceCriteria": [
+      "Main pages load in under 2 seconds.",
+      "Cache invalidation works on product updates.",
+      "The platform supports 1,000 concurrent users in load tests."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 82",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-012",
+    "projectId": 3,
+    "title": "Harden security and GDPR compliance",
+    "description": "Protect against XSS, CSRF and SQL injection, add rate limiting, cookie consent, data export and account deletion.",
+    "userStories": [
+      "As a customer, I want my personal data protected so that I can trust the shop."
+    ],
+    "acceptanceCriteria": [
+      "Security scans show no critical issue.",
+      "Users can export and delete their data.",
+      "Cookie consent is implemented."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 16,
+    "deadline": "Day 85",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-013",
+    "projectId": 3,
+    "title": "Set up automated tests and the CI/CD pipeline",
+    "description": "Write unit, integration and end-to-end tests (70% coverage on business logic) and automate build, test and deployment.",
+    "userStories": [
+      "As a developer, I want automated checks so that regressions are caught before release."
+    ],
+    "acceptanceCriteria": [
+      "Coverage reaches 70% on business logic.",
+      "Every pull request runs the test suite.",
+      "Merging to main deploys to staging."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 24,
+    "deadline": "Day 88",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-009",
+      "TASK-010"
+    ]
+  },
+  {
+    "id": "TASK-014",
+    "projectId": 3,
+    "title": "Deploy to production and deliver documentation",
+    "description": "Deploy staging and production, configure monitoring, deliver API docs, database schema, admin guide and train the client team.",
+    "userStories": [
+      "As a client, I want a documented production system so that my team can operate it."
+    ],
+    "acceptanceCriteria": [
+      "Production meets the 99.5% availability target.",
+      "Documentation is complete.",
+      "The client team is trained."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 16,
+    "deadline": "Day 90",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-011",
+      "TASK-012",
+      "TASK-013"
+    ]
+  },
+  {
+    "id": "TASK-001",
+    "projectId": 4,
+    "title": "Set up React Native and Firebase",
+    "description": "Initialize the React Native (TypeScript) project, configure Firebase (Auth, Firestore, Cloud Messaging) and the navigation structure.",
+    "userStories": [
+      "As a developer, I want a working base project so that the team can build features on it."
+    ],
+    "acceptanceCriteria": [
+      "The app runs on iOS and Android emulators.",
+      "Firebase is connected.",
+      "Tab navigation is in place."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 10,
+    "deadline": "Day 3",
+    "status": "To Do",
+    "dependencies": []
+  },
+  {
+    "id": "TASK-002",
+    "projectId": 4,
+    "title": "Build authentication and user profile",
+    "description": "Implement signup, login and profile screens (age, weight, height, level, goals) with form validation.",
+    "userStories": [
+      "As a user, I want to set my goals so that the app adapts to me."
+    ],
+    "acceptanceCriteria": [
+      "Users can sign up and log in.",
+      "Profile data is saved in Firestore.",
+      "Invalid fields show clear errors."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 12,
+    "deadline": "Day 8",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "projectId": 4,
+    "title": "Create the exercise library",
+    "description": "Add 100+ exercises with description, target muscles and illustrations, with search and filters by muscle group.",
+    "userStories": [
+      "As a user, I want to browse exercises so that I know how to perform them."
+    ],
+    "acceptanceCriteria": [
+      "At least 100 exercises are available.",
+      "Search and muscle filters work.",
+      "Each exercise has an illustration."
+    ],
+    "priority": "Medium",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 14,
+    "deadline": "Day 13",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "projectId": 4,
+    "title": "Build the workout builder and session logging",
+    "description": "Let users create custom workouts and log sets, reps, weights and rest times in under 30 seconds.",
+    "userStories": [
+      "As a user, I want to log a set quickly so that I can stay focused on training."
+    ],
+    "acceptanceCriteria": [
+      "A workout can be created from the library.",
+      "Logging a set takes at most a few taps.",
+      "Sessions are saved to history."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 24,
+    "deadline": "Day 20",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002",
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-005",
+    "projectId": 4,
+    "title": "Add the rest timer and HIIT mode",
+    "description": "Implement an integrated rest timer, interval training mode and sound/vibration alerts, also working in the background.",
+    "userStories": [
+      "As a user, I want an automatic rest timer so that I do not need another app."
+    ],
+    "acceptanceCriteria": [
+      "The timer starts after each set.",
+      "HIIT intervals are configurable.",
+      "Alerts work with the screen locked."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "M",
+    "estimatedTime": 8,
+    "deadline": "Day 23",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-006",
+    "projectId": 4,
+    "title": "Implement GPS tracking",
+    "description": "Record runs and bike rides with distance, speed and elevation, and display the route on a map.",
+    "userStories": [
+      "As a runner, I want to track my route so that I can measure my progress."
+    ],
+    "acceptanceCriteria": [
+      "The route is drawn on a map.",
+      "Distance, pace and elevation are computed.",
+      "Tracking continues in the background."
+    ],
+    "priority": "High",
+    "importance": "Medium",
+    "size": "L",
+    "estimatedTime": 16,
+    "deadline": "Day 28",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-007",
+    "projectId": 4,
+    "title": "Create statistics and progress charts",
+    "description": "Display weight evolution, training volume and personal records with weekly and monthly charts.",
+    "userStories": [
+      "As a user, I want to see my progress so that I stay motivated."
+    ],
+    "acceptanceCriteria": [
+      "Charts show weight and volume over time.",
+      "Personal records are highlighted.",
+      "Period filters work."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 12,
+    "deadline": "Day 34",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004",
+      "TASK-006"
+    ]
+  },
+  {
+    "id": "TASK-008",
+    "projectId": 4,
+    "title": "Add goals and achievement badges",
+    "description": "Allow weekly goals and automatically award badges for streaks, records and milestones.",
+    "userStories": [
+      "As a user, I want rewards for my efforts so that I keep training regularly."
+    ],
+    "acceptanceCriteria": [
+      "Weekly goals can be defined.",
+      "Badges are awarded automatically.",
+      "Progress toward each goal is displayed."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "M",
+    "estimatedTime": 10,
+    "deadline": "Day 38",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-007"
+    ]
+  },
+  {
+    "id": "TASK-009",
+    "projectId": 4,
+    "title": "Develop the social features",
+    "description": "Add friends, leaderboards and group challenges with push notifications.",
+    "userStories": [
+      "As a user, I want to challenge my friends so that training becomes more fun."
+    ],
+    "acceptanceCriteria": [
+      "Users can add and remove friends.",
+      "Challenges have a leaderboard.",
+      "Push notifications announce invitations."
+    ],
+    "priority": "Medium",
+    "importance": "Medium",
+    "size": "L",
+    "estimatedTime": 16,
+    "deadline": "Day 42",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-010",
+    "projectId": 4,
+    "title": "Implement offline mode and synchronization",
+    "description": "Store data locally, queue changes while offline and synchronize with Firestore when the connection returns, with conflict handling.",
+    "userStories": [
+      "As a user, I want to log workouts without internet so that I can train anywhere."
+    ],
+    "acceptanceCriteria": [
+      "Workouts can be logged offline.",
+      "Data syncs automatically when online.",
+      "No data is lost or duplicated."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 14,
+    "deadline": "Day 43",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-011",
+    "projectId": 4,
+    "title": "Test on devices and publish the beta",
+    "description": "Test on at least 5 devices, fix bugs, ensure GDPR account deletion, and publish the beta on TestFlight and Google Play.",
+    "userStories": [
+      "As a tester, I want a stable beta so that I can give useful feedback."
+    ],
+    "acceptanceCriteria": [
+      "A test report covers 5 different devices.",
+      "Account deletion removes user data.",
+      "The beta is installable on both stores."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 12,
+    "deadline": "Day 45",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-008",
+      "TASK-009",
+      "TASK-010"
+    ]
+  },
+  {
+    "id": "TASK-001",
+    "projectId": 5,
+    "title": "Define the architecture and provision infrastructure",
+    "description": "Design the data platform architecture, set up the repository, CI, Kubernetes cluster, object storage and PostgreSQL environments.",
+    "userStories": [
+      "As a data engineer, I want a solid infrastructure so that pipelines run reliably."
+    ],
+    "acceptanceCriteria": [
+      "An architecture diagram is validated.",
+      "Dev and staging environments are provisioned.",
+      "Infrastructure is described as code."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 40,
+    "deadline": "Day 8",
+    "status": "To Do",
+    "dependencies": []
+  },
+  {
+    "id": "TASK-002",
+    "projectId": 5,
+    "title": "Build the data ingestion connectors",
+    "description": "Develop importers for CSV/Excel files, SQL databases and external APIs, with scheduled synchronizations in Airflow.",
+    "userStories": [
+      "As an analyst, I want to connect my data sources so that everything is centralized."
+    ],
+    "acceptanceCriteria": [
+      "CSV, Excel, SQL and API sources are supported.",
+      "Syncs run on a schedule.",
+      "Failures raise alerts and can be retried."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 56,
+    "deadline": "Day 20",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-001"
+    ]
+  },
+  {
+    "id": "TASK-003",
+    "projectId": 5,
+    "title": "Create the cleaning and transformation pipeline",
+    "description": "Detect missing values, normalize formats, remove duplicates and log each transformation step.",
+    "userStories": [
+      "As an analyst, I want clean data so that my indicators are trustworthy."
+    ],
+    "acceptanceCriteria": [
+      "Missing values and duplicates are handled by rules.",
+      "Every transformation is logged.",
+      "Data quality reports are generated."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 40,
+    "deadline": "Day 30",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-002"
+    ]
+  },
+  {
+    "id": "TASK-004",
+    "projectId": 5,
+    "title": "Model the data warehouse",
+    "description": "Design the star schema with fact and dimension tables and implement incremental refresh.",
+    "userStories": [
+      "As an analyst, I want a structured warehouse so that queries are fast and consistent."
+    ],
+    "acceptanceCriteria": [
+      "Fact and dimension tables are created.",
+      "Incremental refresh works.",
+      "A data dictionary is documented."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 40,
+    "deadline": "Day 40",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-003"
+    ]
+  },
+  {
+    "id": "TASK-005",
+    "projectId": 5,
+    "title": "Develop the indicators API with FastAPI",
+    "description": "Expose KPIs, filters and aggregations through documented, authenticated REST endpoints.",
+    "userStories": [
+      "As a front-end developer, I want a clean API so that I can build dashboards easily."
+    ],
+    "acceptanceCriteria": [
+      "Endpoints return KPIs with filters.",
+      "OpenAPI documentation is generated.",
+      "Responses are cached for heavy queries."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 32,
+    "deadline": "Day 48",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-006",
+    "projectId": 5,
+    "title": "Build the interactive dashboards",
+    "description": "Create the React dashboards with interactive charts, dynamic filters, period comparison, PDF export and secure share links.",
+    "userStories": [
+      "As a decision maker, I want interactive dashboards so that I can explore the data myself."
+    ],
+    "acceptanceCriteria": [
+      "Charts update with filters.",
+      "Dashboards load in under 3 seconds.",
+      "A dashboard can be exported to PDF and shared by link."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 64,
+    "deadline": "Day 62",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-007",
+    "projectId": 5,
+    "title": "Train the forecasting models",
+    "description": "Build time-series models to forecast sales and stock needs, evaluate them and expose predictions with confidence intervals.",
+    "userStories": [
+      "As a planner, I want sales forecasts so that I can anticipate stock needs."
+    ],
+    "acceptanceCriteria": [
+      "Mean error is below 10% on the last three months.",
+      "Forecasts include confidence intervals.",
+      "Evaluation is documented in notebooks."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 64,
+    "deadline": "Day 72",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-008",
+    "projectId": 5,
+    "title": "Implement anomaly detection and alerts",
+    "description": "Detect unusual variations of key indicators and send automatic alerts to the concerned users.",
+    "userStories": [
+      "As a manager, I want alerts on abnormal values so that I can react quickly."
+    ],
+    "acceptanceCriteria": [
+      "Anomalies are flagged automatically.",
+      "Alerts are sent by email and in the app.",
+      "Thresholds are configurable."
+    ],
+    "priority": "Medium",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 32,
+    "deadline": "Day 80",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-004"
+    ]
+  },
+  {
+    "id": "TASK-009",
+    "projectId": 5,
+    "title": "Build the AI assistant for natural-language queries",
+    "description": "Translate questions into safe, read-only queries, return the result with a chart and explain the answer.",
+    "userStories": [
+      "As a manager, I want to ask questions in plain language so that I do not need to know SQL."
+    ],
+    "acceptanceCriteria": [
+      "At least 80% of the test questions are answered correctly.",
+      "Only read-only queries are executed.",
+      "Each answer includes a chart when relevant."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "XL",
+    "estimatedTime": 56,
+    "deadline": "Day 95",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-010",
+    "projectId": 5,
+    "title": "Implement access control and audit log",
+    "description": "Add roles, dataset-level permissions and a complete audit journal of user actions.",
+    "userStories": [
+      "As an administrator, I want to control who sees which data so that sensitive information is protected."
+    ],
+    "acceptanceCriteria": [
+      "Permissions apply per dataset.",
+      "All sensitive actions are logged.",
+      "Unauthorized access is denied and recorded."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 32,
+    "deadline": "Day 90",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-005"
+    ]
+  },
+  {
+    "id": "TASK-011",
+    "projectId": 5,
+    "title": "Set up MLflow versioning and automatic retraining",
+    "description": "Track experiments, version models and schedule monthly retraining with validation before promotion.",
+    "userStories": [
+      "As a data scientist, I want versioned models so that I can reproduce and roll back results."
+    ],
+    "acceptanceCriteria": [
+      "Models are tracked and versioned in MLflow.",
+      "Retraining runs monthly.",
+      "A model is promoted only if it passes validation."
+    ],
+    "priority": "Medium",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 32,
+    "deadline": "Day 100",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-007",
+      "TASK-008"
+    ]
+  },
+  {
+    "id": "TASK-012",
+    "projectId": 5,
+    "title": "Secure data and anonymize personal information",
+    "description": "Encrypt data at rest and in transit and anonymize personal data in analytical datasets.",
+    "userStories": [
+      "As a data protection officer, I want personal data anonymized so that the platform is compliant."
+    ],
+    "acceptanceCriteria": [
+      "Data is encrypted at rest and in transit.",
+      "Personal fields are anonymized in the warehouse.",
+      "A compliance checklist is completed."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 24,
+    "deadline": "Day 105",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-010"
+    ]
+  },
+  {
+    "id": "TASK-013",
+    "projectId": 5,
+    "title": "Deploy on Kubernetes and configure monitoring",
+    "description": "Deploy all services to preproduction, configure Prometheus and Grafana monitoring, and run load and performance tests.",
+    "userStories": [
+      "As an operator, I want monitoring so that I can detect issues before users do."
+    ],
+    "acceptanceCriteria": [
+      "All services run on Kubernetes.",
+      "Dashboards monitor health and performance.",
+      "Load tests meet the performance targets."
+    ],
+    "priority": "Critical",
+    "importance": "High",
+    "size": "L",
+    "estimatedTime": 40,
+    "deadline": "Day 112",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-006",
+      "TASK-009",
+      "TASK-011",
+      "TASK-012"
+    ]
+  },
+  {
+    "id": "TASK-014",
+    "projectId": 5,
+    "title": "Write documentation and transfer knowledge",
+    "description": "Deliver architecture docs, data dictionary, user guide, model performance report and train the client's data team.",
+    "userStories": [
+      "As a client, I want complete documentation so that my team can run the platform alone."
+    ],
+    "acceptanceCriteria": [
+      "All documents are delivered.",
+      "A model performance report is included.",
+      "A training session is completed."
+    ],
+    "priority": "High",
+    "importance": "High",
+    "size": "M",
+    "estimatedTime": 24,
+    "deadline": "Day 120",
+    "status": "To Do",
+    "dependencies": [
+      "TASK-013"
+    ]
+  }
+]

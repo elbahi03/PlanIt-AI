@@ -1,7 +1,13 @@
-import { dialog_setting } from "./ui.js";
-import { api } from "./state.js"
+// page main.js : lier avec page index.html 
+
+import { dialog_setting, affiche_projet } from "./ui.js";
+import { api } from "./state.js";
+import { getAll } from "./crud.js"
 
 const setting = document.querySelector("#setting");
+
+getAll();
+affiche_projet(getAll);
 
 setting.addEventListener("click", (e) => {
     dialog_setting();
@@ -9,3 +15,4 @@ setting.addEventListener("click", (e) => {
     key_api_dialog.showModal();
     api();
 })
+

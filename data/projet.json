@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "projectName": "Application de gestion de tâches",
+    "description": "Une application web pour organiser et suivre les tâches d'une équipe.",
+    "brief": "Contexte\nLes équipes de développement perdent un temps précieux à jongler entre plusieurs outils pour suivre l'avancement de leurs tâches. Ce projet vise à créer une application web de type Kanban, simple et rapide, qui centralise la planification, l'assignation et le suivi du travail d'une équipe.\n\nObjectifs\n- Permettre à chaque membre de visualiser en un coup d'œil l'état d'avancement du projet.\n- Faciliter la collaboration grâce aux commentaires, aux mentions et aux notifications.\n- Offrir une interface fluide, responsive et accessible sur ordinateur comme sur mobile.\n\nFonctionnalités principales\n1. Authentification : inscription, connexion, déconnexion, réinitialisation du mot de passe et gestion des rôles (admin, membre, invité).\n2. Tableaux : création, modification, archivage et partage de tableaux de projet.\n3. Colonnes et cartes : création de colonnes personnalisables (À faire, En cours, En revue, Terminé) et de cartes de tâches avec titre, description, priorité, date d'échéance, étiquettes et pièces jointes.\n4. Drag & drop : déplacement des cartes entre les colonnes avec mise à jour en temps réel pour tous les utilisateurs connectés.\n5. Assignation : attribuer une ou plusieurs personnes à une tâche et filtrer les tâches par membre.\n6. Commentaires et activité : fil de discussion par carte et historique complet des modifications.\n7. Notifications : alertes dans l'application et par e-mail lors d'une assignation, d'une mention ou d'une échéance proche.\n8. Tableau de bord : statistiques sur les tâches terminées, en retard et la charge de travail par membre.\n\nContraintes techniques\n- Front-end en React avec une gestion d'état claire et des composants réutilisables.\n- API REST en Node.js (Express) documentée avec Swagger.\n- Base de données MongoDB avec des schémas bien définis.\n- Mises à jour en temps réel via WebSocket.\n- Tests unitaires et d'intégration sur les parties critiques.\n\nLivrables attendus\n- Code source versionné sur Git avec un historique de commits propre.\n- Application déployée et accessible en ligne.\n- Documentation technique et guide d'utilisation.\n- Présentation finale de 15 minutes avec démonstration.\n\nCritères de réussite\nL'application doit être stable, intuitive et permettre à une équipe de 10 personnes de travailler simultanément sans ralentissement notable.",
+    "durationDays": 30,
+    "developersCount": 3,
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": 2,
+    "projectName": "Site portfolio",
+    "description": "Un portfolio personnel responsive pour présenter ses projets.",
+    "brief": "Contexte\nUn portfolio est la vitrine professionnelle d'un développeur. Ce projet consiste à concevoir et développer un site personnel moderne qui met en valeur le parcours, les compétences et les réalisations de son auteur, tout en démontrant sa maîtrise des bases du développement web.\n\nObjectifs\n- Créer une première présence en ligne professionnelle et soignée.\n- Pratiquer le HTML sémantique, le CSS moderne et le JavaScript natif.\n- Garantir un affichage parfait sur mobile, tablette et ordinateur.\n\nPages et sections\n1. Accueil : présentation courte, photo, titre professionnel et bouton d'appel à l'action vers les projets.\n2. À propos : parcours, formation, centres d'intérêt et compétences clés sous forme de barres ou d'icônes.\n3. Projets : galerie de cartes avec image, titre, description, technologies utilisées et liens vers le code source et la démo.\n4. Contact : formulaire avec nom, e-mail et message, avec validation côté client et message de confirmation.\n5. Pied de page : liens vers les réseaux sociaux (GitHub, LinkedIn) et mentions légales.\n\nExigences de design\n- Design cohérent avec une palette de couleurs et deux polices maximum.\n- Navigation fixe avec défilement fluide vers les sections.\n- Mode clair et mode sombre au choix de l'utilisateur.\n- Animations légères à l'apparition des éléments, sans nuire aux performances.\n\nExigences techniques\n- HTML5 sémantique et accessible (balises appropriées, attributs alt, contrastes suffisants).\n- CSS avec Flexbox et Grid, sans framework, selon une approche mobile-first.\n- JavaScript natif pour le menu mobile, le mode sombre et la validation du formulaire.\n- Score Lighthouse supérieur à 90 en performance et en accessibilité.\n\nLivrables attendus\n- Code source sur GitHub avec un fichier README clair.\n- Site publié via GitHub Pages ou Netlify.\n\nCritères de réussite\nLe site se charge rapidement, s'adapte à toutes les tailles d'écran et donne envie aux recruteurs d'en savoir plus sur son auteur.",
+    "durationDays": 10,
+    "developersCount": 1,
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "difficulty": "Beginner"
+  },
+  {
+    "id": 3,
+    "projectName": "Plateforme e-commerce",
+    "description": "Une boutique en ligne complète avec paiement et gestion des stocks.",
+    "brief": "Contexte\nUne entreprise de distribution souhaite vendre ses produits en ligne et remplacer sa gestion manuelle des commandes. Elle a besoin d'une plateforme e-commerce complète, performante et évolutive, capable de supporter plusieurs milliers de visiteurs par jour et une croissance rapide de son catalogue.\n\nObjectifs\n- Offrir aux clients une expérience d'achat rapide, claire et sécurisée.\n- Donner aux administrateurs un outil puissant pour gérer produits, stocks, commandes et clients.\n- Mettre en place une architecture scalable, maintenable et testée.\n\nFonctionnalités côté client\n1. Catalogue : liste de produits avec recherche, filtres (catégorie, prix, marque, disponibilité), tri et pagination.\n2. Fiche produit : galerie d'images, variantes (taille, couleur), stock en temps réel, avis et notes des clients.\n3. Panier : ajout, suppression, modification des quantités, codes promotionnels et persistance entre les sessions.\n4. Paiement : intégration de Stripe, calcul des taxes et des frais de livraison, confirmation par e-mail.\n5. Compte utilisateur : inscription, connexion (e-mail et réseaux sociaux), historique des commandes, adresses et liste de souhaits.\n\nFonctionnalités côté administration\n1. Gestion des produits : création, modification, import CSV, gestion des catégories et des variantes.\n2. Gestion des stocks : alertes de rupture, historique des mouvements et réapprovisionnement.\n3. Gestion des commandes : changement de statut (payée, expédiée, livrée, remboursée), génération de factures PDF et suivi des colis.\n4. Statistiques : chiffre d'affaires, produits les plus vendus, taux de conversion et paniers abandonnés.\n5. Rôles et permissions : administrateur, gestionnaire de stock, support client.\n\nArchitecture et contraintes techniques\n- Front-end en Next.js avec rendu côté serveur pour le référencement et la performance.\n- API en NestJS structurée en modules, avec validation des données et gestion centralisée des erreurs.\n- Base de données PostgreSQL avec migrations et index optimisés.\n- Mise en cache avec Redis pour le catalogue et les sessions.\n- Conteneurisation avec Docker et pipeline CI/CD (tests, build, déploiement automatique).\n- Sécurité : protection contre les attaques XSS, CSRF et injections SQL, chiffrement des mots de passe, conformité RGPD.\n- Couverture de tests d'au moins 70 % sur la logique métier.\n\nLivrables attendus\n- Code source complet et documenté.\n- Environnements de test et de production déployés.\n- Documentation de l'API, schéma de la base de données et diagramme d'architecture.\n- Guide d'administration et formation de l'équipe cliente.\n\nCritères de réussite\nLa plateforme doit supporter une montée en charge de 1 000 utilisateurs simultanés, garantir un temps de chargement inférieur à 2 secondes sur les pages principales et assurer un taux de disponibilité de 99,5 %.",
+    "durationDays": 90,
+    "developersCount": 5,
+    "technologies": [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "difficulty": "Advanced"
+  },
+  {
+    "id": 4,
+    "projectName": "Application de suivi sportif",
+    "description": "Une application mobile pour enregistrer ses séances, suivre ses progrès et rester motivé.",
+    "brief": "Contexte\nBeaucoup de personnes abandonnent la pratique sportive par manque de suivi et de motivation. Ce projet consiste à développer une application mobile qui permet d'enregistrer ses entraînements, de visualiser ses progrès et de se fixer des objectifs réalistes, avec une dimension sociale pour encourager la régularité.\n\nObjectifs\n- Simplifier l'enregistrement d'une séance en moins de 30 secondes.\n- Rendre les progrès visibles grâce à des graphiques clairs et des badges de réussite.\n- Créer une communauté bienveillante autour de défis entre amis.\n\nFonctionnalités principales\n1. Profil : âge, poids, taille, niveau sportif et objectifs (perte de poids, prise de masse, endurance).\n2. Séances : création de séances personnalisées avec exercices, séries, répétitions, charges et temps de repos.\n3. Bibliothèque d'exercices : plus de 100 exercices avec description, muscles ciblés et illustrations.\n4. Chronomètre intégré : minuteur de repos, mode intervalles (HIIT) et alertes sonores.\n5. Suivi GPS : enregistrement des parcours de course ou de vélo avec distance, vitesse et dénivelé.\n6. Statistiques : courbes d'évolution du poids, du volume d'entraînement et des records personnels.\n7. Objectifs et badges : définition d'objectifs hebdomadaires et récompenses automatiques.\n8. Social : ajout d'amis, classements et défis collectifs avec notifications.\n9. Mode hors-ligne : les données sont synchronisées dès que la connexion revient.\n\nContraintes techniques\n- Application mobile multiplateforme (iOS et Android) développée avec React Native.\n- Back-end Firebase (authentification, base Firestore, notifications push).\n- Utilisation de la géolocalisation et des capteurs du téléphone.\n- Interface fluide à 60 images par seconde, y compris sur des téléphones d'entrée de gamme.\n- Respect du RGPD pour les données de santé, avec option de suppression du compte.\n\nLivrables attendus\n- Application installable via TestFlight et Google Play (version bêta).\n- Code source commenté et dépôt Git structuré.\n- Maquettes Figma et guide de style.\n- Rapport de tests sur au moins 5 appareils différents.\n\nCritères de réussite\nUn utilisateur doit pouvoir créer son compte, planifier une séance et consulter ses statistiques en moins de 5 minutes, sans aide extérieure.",
+    "durationDays": 45,
+    "developersCount": 3,
+    "technologies": [
+      "React Native",
+      "Firebase",
+      "TypeScript"
+    ],
+    "difficulty": "Intermediate"
+  },
+  {
+    "id": 5,
+    "projectName": "Tableau de bord d'analyse de données avec IA",
+    "description": "Une plateforme qui analyse des données d'entreprise et génère des prévisions et des recommandations grâce à l'intelligence artificielle.",
+    "brief": "Contexte\nUne entreprise de taille moyenne accumule d'importantes quantités de données (ventes, stocks, relation client) mais ne parvient pas à les exploiter efficacement. Ce projet vise à construire une plateforme d'analyse capable d'ingérer ces données, de les visualiser et de produire automatiquement des prévisions et des recommandations grâce à des modèles de machine learning.\n\nObjectifs\n- Centraliser plusieurs sources de données dans un entrepôt unique et fiable.\n- Fournir aux décideurs des tableaux de bord interactifs et personnalisables.\n- Prédire les ventes, détecter les anomalies et recommander des actions concrètes.\n- Permettre d'interroger les données en langage naturel via un assistant conversationnel.\n\nFonctionnalités principales\n1. Ingestion des données : import de fichiers CSV et Excel, connexion à des bases SQL et à des API externes, planification de synchronisations automatiques.\n2. Nettoyage et transformation : détection des valeurs manquantes, normalisation, dédoublonnage et historique des traitements.\n3. Entrepôt de données : modélisation en étoile, tables de faits et dimensions, rafraîchissement incrémental.\n4. Visualisation : graphiques interactifs, filtres dynamiques, comparaisons de périodes, export en PDF et partage par lien sécurisé.\n5. Prévisions : modèles de séries temporelles pour anticiper les ventes et les besoins en stock, avec intervalles de confiance.\n6. Détection d'anomalies : alertes automatiques en cas de variation inhabituelle des indicateurs.\n7. Assistant IA : questions en langage naturel (par exemple « Quelles sont les 5 régions les plus rentables ce trimestre ? ») traduites en requêtes et accompagnées d'un graphique.\n8. Gestion des accès : rôles, permissions par jeu de données et journal d'audit.\n\nArchitecture et contraintes techniques\n- Pipeline de données orchestré avec Airflow et traitements en Python (pandas, scikit-learn).\n- API FastAPI exposant les modèles et les indicateurs.\n- Base PostgreSQL pour l'entrepôt et stockage objet pour les fichiers bruts.\n- Interface en React avec une bibliothèque de graphiques (Recharts ou D3).\n- Suivi et versionnement des modèles avec MLflow, avec ré-entraînement automatique mensuel.\n- Déploiement sur Kubernetes avec supervision (Prometheus et Grafana).\n- Chiffrement des données au repos et en transit, anonymisation des données personnelles.\n\nLivrables attendus\n- Plateforme complète déployée sur un environnement de préproduction.\n- Notebooks documentant la préparation des données et l'évaluation des modèles.\n- Documentation d'architecture, dictionnaire de données et guide utilisateur.\n- Rapport de performance des modèles (précision, erreur moyenne, temps de réponse).\n- Session de transfert de compétences pour l'équipe data de l'entreprise.\n\nCritères de réussite\nLes prévisions doivent atteindre une erreur moyenne inférieure à 10 % sur les trois derniers mois de données, les tableaux de bord doivent se charger en moins de 3 secondes et l'assistant IA doit répondre correctement à au moins 80 % des questions de test fournies par l'entreprise.",
+    "durationDays": 120,
+    "developersCount": 6,
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "Airflow",
+      "Kubernetes"
+    ],
+    "difficulty": "Advanced"
+  }
+]
