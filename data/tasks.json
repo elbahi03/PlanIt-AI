@@ -17,7 +17,7 @@
     "size": "S",
     "estimatedTime": 8,
     "deadline": "Day 2",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": []
   },
   {
@@ -38,7 +38,7 @@
     "size": "M",
     "estimatedTime": 10,
     "deadline": "Day 4",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-001"
     ]
@@ -84,7 +84,7 @@
     "size": "M",
     "estimatedTime": 10,
     "deadline": "Day 9",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-003"
     ]
@@ -107,7 +107,7 @@
     "size": "L",
     "estimatedTime": 14,
     "deadline": "Day 12",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-003"
     ]
@@ -154,7 +154,7 @@
     "size": "L",
     "estimatedTime": 16,
     "deadline": "Day 20",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-006"
     ]
@@ -200,7 +200,7 @@
     "size": "M",
     "estimatedTime": 10,
     "deadline": "Day 26",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-008"
     ]
@@ -223,7 +223,7 @@
     "size": "M",
     "estimatedTime": 8,
     "deadline": "Day 27",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-008"
     ]
@@ -271,7 +271,7 @@
     "size": "M",
     "estimatedTime": 8,
     "deadline": "Day 30",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-011"
     ]
@@ -294,7 +294,7 @@
     "size": "S",
     "estimatedTime": 3,
     "deadline": "Day 1",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": []
   },
   {
@@ -338,7 +338,7 @@
     "size": "S",
     "estimatedTime": 4,
     "deadline": "Day 3",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-002"
     ]
@@ -361,7 +361,7 @@
     "size": "S",
     "estimatedTime": 4,
     "deadline": "Day 4",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-002"
     ]
@@ -384,7 +384,7 @@
     "size": "M",
     "estimatedTime": 6,
     "deadline": "Day 6",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-002"
     ]
@@ -453,7 +453,7 @@
     "size": "M",
     "estimatedTime": 5,
     "deadline": "Day 9",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-003",
       "TASK-004",
@@ -480,7 +480,7 @@
     "size": "XS",
     "estimatedTime": 2,
     "deadline": "Day 10",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-008"
     ]
@@ -524,7 +524,7 @@
     "size": "L",
     "estimatedTime": 20,
     "deadline": "Day 10",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-001"
     ]
@@ -547,7 +547,7 @@
     "size": "L",
     "estimatedTime": 24,
     "deadline": "Day 18",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-002"
     ]
@@ -570,7 +570,7 @@
     "size": "XL",
     "estimatedTime": 32,
     "deadline": "Day 28",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-002"
     ]
@@ -616,7 +616,7 @@
     "size": "L",
     "estimatedTime": 20,
     "deadline": "Day 45",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-005"
     ]
@@ -639,7 +639,7 @@
     "size": "L",
     "estimatedTime": 24,
     "deadline": "Day 52",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-004",
       "TASK-006"
@@ -687,7 +687,7 @@
     "size": "L",
     "estimatedTime": 24,
     "deadline": "Day 70",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-008"
     ]
@@ -710,7 +710,7 @@
     "size": "XL",
     "estimatedTime": 40,
     "deadline": "Day 78",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-003",
       "TASK-004"
@@ -757,7 +757,7 @@
     "size": "M",
     "estimatedTime": 16,
     "deadline": "Day 85",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-003"
     ]
@@ -780,7 +780,7 @@
     "size": "L",
     "estimatedTime": 24,
     "deadline": "Day 88",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-009",
       "TASK-010"
@@ -829,7 +829,7 @@
     "size": "M",
     "estimatedTime": 10,
     "deadline": "Day 3",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": []
   },
   {
@@ -873,7 +873,7 @@
     "size": "L",
     "estimatedTime": 14,
     "deadline": "Day 13",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-001"
     ]
@@ -896,7 +896,7 @@
     "size": "XL",
     "estimatedTime": 24,
     "deadline": "Day 20",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-002",
       "TASK-003"
@@ -920,7 +920,7 @@
     "size": "M",
     "estimatedTime": 8,
     "deadline": "Day 23",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-004"
     ]
@@ -966,7 +966,7 @@
     "size": "M",
     "estimatedTime": 12,
     "deadline": "Day 34",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-004",
       "TASK-006"
@@ -990,7 +990,7 @@
     "size": "M",
     "estimatedTime": 10,
     "deadline": "Day 38",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-007"
     ]
@@ -1036,7 +1036,7 @@
     "size": "L",
     "estimatedTime": 14,
     "deadline": "Day 43",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-004"
     ]
@@ -1059,7 +1059,7 @@
     "size": "M",
     "estimatedTime": 12,
     "deadline": "Day 45",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-008",
       "TASK-009",
@@ -1084,7 +1084,7 @@
     "size": "L",
     "estimatedTime": 40,
     "deadline": "Day 8",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": []
   },
   {
@@ -1128,7 +1128,7 @@
     "size": "L",
     "estimatedTime": 40,
     "deadline": "Day 30",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-002"
     ]
@@ -1151,7 +1151,7 @@
     "size": "L",
     "estimatedTime": 40,
     "deadline": "Day 40",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-003"
     ]
@@ -1197,7 +1197,7 @@
     "size": "XL",
     "estimatedTime": 64,
     "deadline": "Day 62",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-005"
     ]
@@ -1220,7 +1220,7 @@
     "size": "XL",
     "estimatedTime": 64,
     "deadline": "Day 72",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-004"
     ]
@@ -1243,7 +1243,7 @@
     "size": "L",
     "estimatedTime": 32,
     "deadline": "Day 80",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-004"
     ]
@@ -1289,7 +1289,7 @@
     "size": "L",
     "estimatedTime": 32,
     "deadline": "Day 90",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-005"
     ]
@@ -1312,7 +1312,7 @@
     "size": "L",
     "estimatedTime": 32,
     "deadline": "Day 100",
-    "status": "To Do",
+    "status": "Done",
     "dependencies": [
       "TASK-007",
       "TASK-008"
@@ -1359,7 +1359,7 @@
     "size": "L",
     "estimatedTime": 40,
     "deadline": "Day 112",
-    "status": "To Do",
+    "status": "En cours",
     "dependencies": [
       "TASK-006",
       "TASK-009",

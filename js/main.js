@@ -2,11 +2,11 @@
 
 import { dialog_setting, affiche_projet } from "./ui.js";
 import { api } from "./state.js";
-import { getAll } from "./crud.js"
+import { getAll} from "./crud.js"
 
 const setting = document.querySelector("#setting");
+const projet_div = document.querySelector("#projet")
 
-getAll();
 affiche_projet(getAll);
 
 setting.addEventListener("click", (e) => {
@@ -14,5 +14,15 @@ setting.addEventListener("click", (e) => {
     const key_api_dialog = document.querySelector("#key_api_dialog");
     key_api_dialog.showModal();
     api();
+})
+
+
+
+projet_div.addEventListener("click", (e) => {
+    console.log(e.target.classList.contains("Ouvrir"));
+    if(e.target.classList.contains("Ouvrir")){
+        let id = Number(e.target.dataset.id);
+        window.location.href = `projet.html?id=${id}`;
+    }
 })
 

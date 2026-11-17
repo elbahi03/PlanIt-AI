@@ -15,29 +15,28 @@ export async function getAll() {
             const response = await fetch('./data/projet.json');
             const data = await response.json();
             localStorage.setItem("projet", JSON.stringify(data));
-            const resultat = await data ;
+            const resultat = await data;
             console.log(resultat);
-            
+
             return resultat;
         } catch (error) {
             console.log(error);
         }
     }
 }
-getAll();
+
 // get element localement by id :
 export async function getByid(id) {
     if (card) {
-        card = JSON.parse(card);
         card = card.find((card) => card.id === id);
-        if (card === null) {
+        if (card === undefined) {
             return "il n'a pas cette projet , plaise recherche encore"
         } else {
             return card;
         }
     } else {
         try {
-            const response = await fetch('./data/carts.json')
+            const response = await fetch('./data/projet.json')
             const data = await response.json();
             return data.find((data) => data.id === id);
         } catch (error) {
@@ -101,3 +100,115 @@ export async function createprojet(projet) {
 }
 
 
+//// function de gestion de class task localement :
+
+let card_task = JSON.parse(localStorage.getItem("tasks")) || [];
+
+if (!localStorage.getItem("count")) localStorage.setItem("count", `14`);
+
+// affiche all tasks
+export async function getAll_tasks() {
+    if (card_task.length != 0) {
+        return card_task;
+    } else {
+        try {
+            const response = await fetch('./data/tasks.json');
+            const data = await response.json();
+            localStorage.setItem("tasks", JSON.stringify(data));
+            const resultat = await data;
+            console.log(resultat);
+
+            return resultat;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+
+// affiche task to do d'un projet :
+export async function gettasksDo(id) {
+    if (card_task.length != 0) {
+        let find = card_task.filter((card) => card.projectId === id && card.status === "To Do");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    } else {
+        try {
+            const response = await fetch('./data/tasks.json')
+            const data = await response.json();
+            let find = data.filter((data) => data.projectId === id && data.status === "To Do");
+            return find;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+// affiche task en cours d'un projet :
+export async function gettasksCours(id) {
+    if (card_task.length != 0) {
+        let find = card_task.filter((card) => card.projectId === id && card.status === "En cours");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    } else {
+        try {
+            const response = await fetch('./data/tasks.json')
+            const data = await response.json();
+            let find = data.filter((data) => data.projectId === id && data.status === "En cours");
+            return find;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+// affiche tasks done d'un projet :
+export async function gettasksDone(id) {
+    if (card_task.length != 0) {
+        let find = card_task.filter((card) => card.projectId === id && card.status === "Done");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    } else {
+        try {
+            const response = await fetch('./data/tasks.json')
+            const data = await response.json();
+            let find = data.filter((data) => data.projectId === id && data.status === "Done");
+            return find;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+// modifier statut d'un task : 
+export async function updateStatut(id_task, status, id) {
+    if (card_task.length != 0) {
+        const task = card_task.find(task => task.id === id_task && task.projectId === id)
+        if (task) {
+            task.status = status;
+            localStorage.setItem("tasks", JSON.stringify(card_task));
+        } else {
+            console.log("il n'a pas cette task maintenant, il doit virifier.");
+            return "il n'a pas cette task maintenant, il doit virifier.";
+        }       
+    }else {
+        try {
+            const response = await fetch('./data/tasks.json');
+            const data = await response.json();
+            const task =  data.find((data) => data.id === id_task && data.projectId === id);
+            task.status = status ;
+            localStorage.setItem("tasks", JSON.stringify(data));
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}
