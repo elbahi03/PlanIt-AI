@@ -1,19 +1,29 @@
-import {GoogleGenAI} from '@google/genai';
-const GEMINI_API_KEY = "";
+const API_KEY = "";
+const URL_API = "https://api.groq.com/openai/v1/chat/completions";
 
-const ai = new GoogleGenAI({apiKey: GEMINI_API_KEY});
 
-export async function creationJsonPromt(projet) {
-  const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
-    contents: `You are an experienced Senior Project Manager and Agile Coach specialized in software development.
+export async function creation_tasks(projet) {
+
+    if (!API_KEY) return "il doit stoker votre key API (voir le documentation de site)."
+
+    const res = await fetch(URL_API, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+            model: "openai/gpt-oss-120b",
+            messages: [{
+                role: "user",
+                content: `You are an experienced Senior Project Manager and Agile Coach specialized in software development.
 Your mission is to analyze the project brief below and transform it into a detailed, realistic and well-organized development plan.
 PROJECT INFORMATION:
-Project Name: ${projet.name}
-Project Duration: ${projet.uree} days
+Project Name: ${projet.nom}
+Project Duration: ${projet.duree} days
 Team Size: ${projet.nbr_dev} developer(s)
 Technologies: ${projet.technologies}
-Difficulty Level: ${projet.difficulte}
+Difficulty Level: ${projet.niveau}
 Project Description: ${projet.description}
 Project Brief:
 ${projet.brief}
@@ -46,33 +56,13 @@ Return ONLY a valid JSON object, with no markdown, no code fences and no text be
     }
   ]
 }
-Property names and allowed values must be written exactly as shown above.estimatedTime and totalEstimatedHours must be numbers, not strings.totalEstimatedHours must equal the sum of all estimatedTime values.Generate between 8 and 40 tasks, depending on the project duration, the team size and the difficulty level.`,
-  });
-  console.log(response.text);
-  return response.text;
+Property names and allowed values must be written exactly as shown above.estimatedTime and totalEstimatedHours must be numbers, not strings.totalEstimatedHours must equal the sum of all estimatedTime values.Generate between 8 and 40 tasks, depending on the project duration, the team size and the difficulty level.` }]
+        })
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        return { ok: true, texte: data.choices[0].message.content };
+    }
+    return { ok: false, status: res.status, detail: await res.text() };
 }
-
-async function main() {
-  const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
-    contents: 'whrite me one moticavation.',
-  }).catch((e) => {
-    console.error('error name: ', e.name);
-    console.error('error message: ', e.message);
-    console.error('error status: ', e.status);
-  });
-  console.log(response.text);
-}
-
-// async function main() {
-//   const response = await ai.models.generateContentStream({
-//     model: 'gemini-3.8-flash',
-//     contents: 'whrite me one moticavation.',
-//   });
-//   for await (const chunk of response) {
-//     console.log(chunk.text);
-//   }
-// }
-
-main();
-

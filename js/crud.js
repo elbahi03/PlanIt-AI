@@ -212,3 +212,26 @@ export async function updateStatut(id_task, status, id) {
         } 
     }
 }
+
+export async function Update(id_task, task_update){
+    if (card_task.length != 0) {
+        const task = card_task.find(task => task.id === id_task && task.projectId === id)
+        if (task) {
+            task.status = task_update;
+            localStorage.setItem("tasks", JSON.stringify(card_task));
+        } else {
+            console.log("il n'a pas cette task maintenant, il doit virifier.");
+            return "il n'a pas cette task maintenant, il doit virifier.";
+        }       
+    }else {
+        try {
+            const response = await fetch('./data/tasks.json');
+            const data = await response.json();
+            const task =  data.find((data) => data.id === id_task && data.projectId === id);
+            task.status = task_update ;
+            localStorage.setItem("tasks", JSON.stringify(data));
+        } catch (error) {
+            console.log(error);
+        } 
+    }
+}

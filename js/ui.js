@@ -228,7 +228,7 @@ export async function cart_task(parent, filtrage, id) {
                             </defs>
                         </g>
                     </svg>`;
-        summary.className = "sticky  cursor-pointer list-none [&::-webkit-details-marker]:hidden";
+        summary.className = "sticky cursor-pointer list-none [&::-webkit-details-marker]:hidden";
         const div_content = document.createElement("div");
         const btn_modifier = document.createElement("button");
         const btn_supprimer = document.createElement("button");
@@ -316,28 +316,24 @@ export function dragon_drop(id) {
         coln.forEach(c => {
             c.addEventListener("dragover", (e) => {
                 e.preventDefault()
-                c.parentNode.style.background = "#B4C9F3ff"
+                c.style.background = "#B4C9F3ff"
 
             })
             c.addEventListener("dragleave", (e) => {
-                c.parentNode.style.background = ""
+                c.style.background = ""
 
             })
 
             c.addEventListener("drop", (e) => {
-               let i = 1;
-               if(i=== 1){
-
+                const div = c.querySelector("div");
+                console.log("id de div parent : ",div.id);
                 console.log(drag);
-                c.appendChild(drag);
+                div.appendChild(drag);
                 console.log(c.dataset.status);
-                c.parentNode.style.background = "";
+                c.style.background = "";
                 console.log(drag.dataset.id);
-                updateStatut(drag.dataset.id, c.dataset.status, id);
-                i++;
-                console.log(i);
+                updateStatut(drag.dataset.id, div.dataset.status, id);
                 drag = null;
-            }
             })
         })
 
