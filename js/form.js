@@ -1,9 +1,14 @@
 // page form.js pour page new-project :
 import { tab_show, btn_form, validation } from "./ui.js"
+import { dialog_setting, affiche_projet } from "./ui.js";
+import { api } from "./state.js";
+
 
 const form = document.querySelector("#form_creer");
 const Retour = document.querySelector("#Retour");
 const Suivant = document.querySelector("#Suivant");
+const setting = document.querySelector("#setting");
+
 
 
 var currentTab = 0;
@@ -40,4 +45,11 @@ form.addEventListener("submit", (e) => {
 
     console.log(projet);
     
+})
+
+setting.addEventListener("click", (e) => {
+    dialog_setting();
+    const key_api_dialog = document.querySelector("#key_api_dialog");
+    key_api_dialog.showModal();
+    api();
 })
