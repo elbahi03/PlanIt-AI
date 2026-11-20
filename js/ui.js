@@ -230,13 +230,16 @@ export async function cart_task(parent, filtrage, id, Statut) {
                     </svg>`;
         summary.className = "sticky cursor-pointer list-none [&::-webkit-details-marker]:hidden";
         const div_content = document.createElement("div");
+        const btn_afficher = document.createElement("button");
         const btn_modifier = document.createElement("button");
         const btn_supprimer = document.createElement("button");
 
         div_content.className = "flex flex-col absolute z-1 bg-[#B4C9F3ff] gap-10 ml-[-100px] mt-[10px] p-5 border-[#6F41EAff] border-1 rounded-lg"
+        btn_afficher.textContent = "afficher";
         btn_modifier.textContent = "modifier";
         btn_supprimer.textContent = "supprimer";
 
+        div_content.appendChild(btn_afficher);
         div_content.appendChild(btn_modifier);
         div_content.appendChild(btn_supprimer)
         details_task.appendChild(summary);
