@@ -1,3 +1,5 @@
+import { creation_tasks } from "./api.js"
+
 let card = JSON.parse(localStorage.getItem("projet")) || [];
 
 if (!localStorage.getItem("count")) localStorage.setItem("count", "5");
@@ -45,59 +47,7 @@ export async function getByid(id) {
     }
 }
 
-// creation de projet :
-export async function createprojet(projet) {
-    try {
-        if (projet.name === null) {
-            throw new Error("le nom est obligatoire * .")
-        }
 
-        if (projet.description === null) {
-            throw new Error("le description est obligatoire * .")
-        }
-
-        if (projet.brief === null) {
-            throw new Error("le brief est obligatoire * .")
-        }
-
-        if (projet.duree === null) {
-            throw new Error("le duree est obligatoire * .");
-        }
-
-        if (projet.duree != Number) {
-            throw new Error("le duree doit etre nombre * .");
-        }
-
-        if (projet.nbr_dev === null) {
-            throw new Error("le nbr_dev est obligatoire * .");
-        }
-
-        if (projet.nbbr_dev != Number) {
-            throw new Error("le nbr_dev doit etre nombre * .");
-        }
-
-        if (projet.technologies === null) {
-            throw new Error("le technologies est obligatoire * .");
-        }
-
-        if (projet.difficulte != Beginner && projet.difficulte != Intermediate && projet.difficulte != Advanced) {
-            throw new Error("votre choix n'a pas disponnible * .");
-        }
-
-        projet.CreateAt = Date.now();
-        projet.UpdateAt = null;
-        projet.id = count++;
-        localStorage.setItem("count", count);
-
-        card.push(projet);
-        localStorage.setItem("projet", JSON.stringify(card))
-
-        return ["votre creation de projet est ruessir", projet];
-
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 
 //// function de gestion de class task localement :
@@ -199,21 +149,22 @@ export async function updateStatut(id_task, status, id) {
         } else {
             console.log("il n'a pas cette task maintenant, il doit virifier.");
             return "il n'a pas cette task maintenant, il doit virifier.";
-        }       
-    }else {
+        }
+    } else {
         try {
             const response = await fetch('./data/tasks.json');
             const data = await response.json();
-            const task =  data.find((data) => data.id === id_task && data.projectId === id);
-            task.status = status ;
+            const task = data.find((data) => data.id === id_task && data.projectId === id);
+            task.status = status;
             localStorage.setItem("tasks", JSON.stringify(data));
         } catch (error) {
             console.log(error);
-        } 
+        }
     }
 }
 
-export async function Update(id_task, task_update){
+// UPDATE ALL OBJ
+export async function Update(id_task, task_update) {
     if (card_task.length != 0) {
         const task = card_task.find(task => task.id === id_task && task.projectId === id)
         if (task) {
@@ -222,16 +173,109 @@ export async function Update(id_task, task_update){
         } else {
             console.log("il n'a pas cette task maintenant, il doit virifier.");
             return "il n'a pas cette task maintenant, il doit virifier.";
-        }       
-    }else {
+        }
+    } else {
         try {
             const response = await fetch('./data/tasks.json');
             const data = await response.json();
-            const task =  data.find((data) => data.id === id_task && data.projectId === id);
-            task.status = task_update ;
+            const task = data.find((data) => data.id === id_task && data.projectId === id);
+            task.status = task_update;
             localStorage.setItem("tasks", JSON.stringify(data));
         } catch (error) {
             console.log(error);
-        } 
+        }
+    }
+}
+
+//// functions de plant AI :
+
+const projet_ai = JSON.parse(localStorage.getItem("projet_ai")) || [];
+
+const task_ai = JSON.parse(localStorage.getItem("task_ai")) || [];
+
+// create task and save dans local storage :
+export async function traitement_data(projet) {
+    try {
+        if (projet.nom === null) {
+            throw new Error("le nom est obligatoire * .")
+        }
+
+        if (projet.description === null) {
+            throw new Error("le description est obligatoire * .")
+        }
+
+        if (projet.brief === null) {
+            throw new Error("le brief est obligatoire * .")
+        }
+
+        if (projet.duree === null) {
+            throw new Error("le duree est obligatoire * .");
+        }
+
+        console.log(typeof (projet.duree) !== 'number');
+        console.log(typeof (projet.duree));
+
+        if (typeof (projet.duree) !== 'number') {
+            throw new Error("le duree doit etre nombre * .");
+        }
+
+        console.log(typeof (projet.nbr_dev) !== 'number');
+        console.log(typeof (projet.nbr_dev));
+
+        if (projet.nbr_dev === null) {
+            throw new Error("le nbr_dev est obligatoire * .");
+        }
+
+        if (typeof (projet.nbr_dev) !== 'number') {
+            throw new Error("le nbr_dev doit etre nombre * .");
+        }
+
+        if (projet.technologies === null) {
+            throw new Error("le technologies est obligatoire * .");
+        }
+
+        if (projet.niveau !== "Beginner" && projet.niveau !== "Intermediate" && projet.niveau !== "Advanced") {
+            throw new Error("votre choix n'a pas disponnible * .");
+        }
+
+        projet.CreateAt = Date.now();
+        projet.UpdateAt = null;
+        projet.id = count++;
+        const task_reponce = await creation_tasks(projet);
+        console.log(task_reponce);
+
+        console.log(task_reponce.ok === true);
+
+        if (task_reponce.ok === true && (task_reponce.texte !== "" || task_reponce.texte !== undefined)) {
+            projet.CreateAt = Date.now();
+            projet.UpdateAt = null;
+            projet.id = count++;
+            localStorage.setItem("count", count);
+            projet_ai.push(projet);
+            localStorage.setItem("projet_ai", JSON.stringify(projet_ai));
+            task_reponce.texte = JSON.parse(task_reponce.texte).tasks
+            for (let element of task_reponce.texte) {
+                element.projectId = projet.id
+                task_ai.push(element);
+            }
+            console.log("taskk : ", task_reponce.texte);
+            console.log("task ai local storage : ", task_ai);
+            localStorage.setItem("task_ai", JSON.stringify(task_ai));
+            console.log("task de AI : ", task_reponce.texte);
+
+            return {
+                reponse: "votre creation de projet est ruessir",
+                projet: projet,
+                tasks: task_reponce.texte
+            };
+        } else if (task_reponce.ok === true && (task_reponce.texte === "" || task_reponce.texte === undefined)) {
+            return "le reponse est vide , virifier votre keys API , est ce que on a problem ."
+        }
+        else {
+            return task_reponce;
+        }
+
+    } catch (error) {
+        console.log(error);
     }
 }

@@ -2,6 +2,7 @@
 import { tab_show, btn_form, validation } from "./ui.js"
 import { dialog_setting, affiche_projet } from "./ui.js";
 import { api } from "./state.js";
+import { traitement_data } from "./crud.js"
 
 
 const form = document.querySelector("#form_creer");
@@ -25,7 +26,7 @@ Retour.addEventListener("click", (e) => {
     currentTab = btn_form(-1, true, currentTab, form)
 })
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
     console.log(formData);
@@ -35,17 +36,19 @@ form.addEventListener("submit", (e) => {
         nom: data.nom.trim(),
         description: data.description.trim(),
         brief: data.brief.trim(),
-        duree: Math.abs(data.duree),
-        nbr_dev: Math.abs(data.nbr_dev),
+        duree: Math.abs(Number(data.duree)),
+        nbr_dev: Math.abs(Number(data.nbr_dev)),
         technologies: data.technologies.trim().split(' '),
         niveau: data.niveau.trim()
     }
 
-
-
     console.log(projet);
+
+    const resultat = await traitement_data(projet);
+    console.log(resultat);
     
 })
+
 
 setting.addEventListener("click", (e) => {
     dialog_setting();
