@@ -7,7 +7,7 @@ import { getAll} from "./crud.js"
 const setting = document.querySelector("#setting");
 const projet_div = document.querySelector("#projet")
 
-affiche_projet(getAll);
+affiche_projet(projet_div, getAll);
 
 setting.addEventListener("click", (e) => {
     dialog_setting();

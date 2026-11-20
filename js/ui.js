@@ -122,17 +122,17 @@ export function btn_form(n, bool, currentTab, form) {
 
 // affiche les project : 
 
-export async function affiche_projet(getAll) {
+export async function affiche_projet(parent, getAll) {
     const data = await getAll() || [];
     console.log(data);
 
-    const projet = document.querySelector("#projet");
-    projet.textContent = ""
+    // const projet = document.querySelector("#projet");
+    parent.textContent = ""
     if (data.length === 0) {
         const p = document.createElement("p");
         p.textContent = "« Aucun projet pour le moment, créez-en un pour générer votre premier plan. »";
         p.className = "m-auto text-[15px] text-[#06255Bff]";
-        projet.appendChild(p);
+        parent.appendChild(p);
     } else {
         for (const element of data) {
             const div = document.createElement("div");
@@ -142,11 +142,11 @@ export async function affiche_projet(getAll) {
             const btn_open = document.createElement("button");
             const btn_delete = document.createElement("button");
 
-            projet.className = "grid-cols-3 grid m-10 mx-40 gap-10"
+            parent.className = "grid-cols-3 grid m-10 mx-40 gap-10"
 
             div.className = "flex flex-col justify-start items-start gap-5 border-[#6F41EAff] border-[1px]  rounded-lg p-7";
 
-            titre.textContent = element.projectName;
+            titre.textContent = element.projectName || element.nom;
             titre.className = "text-[20px] text-[#6F41EAff] font-bold"
 
             desc.textContent = element.description;
@@ -168,12 +168,12 @@ export async function affiche_projet(getAll) {
             div.appendChild(titre);
             div.appendChild(desc);
             div.appendChild(div_btn);
-            projet.appendChild(div);
+            parent.appendChild(div);
         }
     }
 }
 
-export async function cart_task(parent, filtrage, id) {
+export async function cart_task(parent, filtrage, id, Statut) {
     const tasks = await filtrage(id);
     for (const task of tasks) {
         const div_parent = document.createElement("div");
@@ -290,11 +290,11 @@ export async function cart_task(parent, filtrage, id) {
 
     }
     if(parent.id === "Done"){
-        dragon_drop(id);
+        dragon_drop(id, Statut);
     }
 }
 
-export function dragon_drop(id) {
+export function dragon_drop(id, Statut) {
     let drag = null
 
     const cartt = document.querySelectorAll(".cart")
@@ -332,7 +332,7 @@ export function dragon_drop(id) {
                 console.log(c.dataset.status);
                 c.style.background = "";
                 console.log(drag.dataset.id);
-                updateStatut(drag.dataset.id, div.dataset.status, id);
+                Statut(drag.dataset.id, div.dataset.status, id);
                 drag = null;
             })
         })

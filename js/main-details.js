@@ -26,9 +26,9 @@ const Do = document.querySelector("#Do");
 const Cours = document.querySelector("#Cours");
 const Done = document.querySelector("#Done");
 
-cart_task(Do, gettasksDo, id)
-cart_task(Cours, gettasksCours, id)
-cart_task(Done, gettasksDone, id)
+cart_task(Do, gettasksDo, id, updateStatut)
+cart_task(Cours, gettasksCours, id, updateStatut)
+cart_task(Done, gettasksDone, id, updateStatut)
 
 
 //declarer 

@@ -279,3 +279,92 @@ export async function traitement_data(projet) {
         console.log(error);
     }
 }
+
+// function of get all projet : 
+export function affiche_allprojet_api(){
+    if(projet_ai.length !== 0 ){
+        return projet_ai ;
+    } else {
+        return "« Aucun projet pour le moment, créez-en un  pour générer votre premier plan. »";
+    } 
+}
+
+// function of affiche projet by id :
+export function affiche_projetById_api(id){
+    if(projet_ai.length !== 0 ){
+        let find = projet_ai.find( (card) => card.id === id );
+        if ( find === undefined ) {
+            return [];
+        } else {
+            return find;
+        }
+    }else {
+        return "« Aucun projet pour le moment, créez-en un pour générer votre premier plan. »";
+    }
+}
+
+// function for get taskes with projet_id :
+export function affiche_tasksByprojetId_api(id){
+    if(task_ai.length !== 0 ){
+        let find = task_ai.find( (task) => task.projectId === id );
+        if ( find === undefined ) {
+            return [];
+        } else {
+            return find;
+        }
+    }else {
+        return "« Aucun projet pour le moment, créez-en un pour générer votre premier plan. »";
+    }
+}
+
+
+// affiche task to do d'un projet :
+export async function gettasks_AiDo(id) {
+    if (task_ai.length != 0) {
+        let find = task_ai.filter((card) => card.projectId === id && card.status === "To Do");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    }
+}
+
+// affiche task en cours d'un projet :
+export async function gettasks_AiCours(id) {
+    if (task_ai.length != 0) {
+        let find = task_ai.filter((card) => card.projectId === id && card.status === "En cours");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    }
+}
+
+// affiche tasks done d'un projet :
+export async function gettasks_AiDone(id) {
+    if (task_ai.length != 0) {
+        let find = task_ai.filter((card) => card.projectId === id && card.status === "Done");
+        if (find === undefined) {
+            return [];
+        } else {
+            return find;
+        }
+    }
+}
+
+// UPDATE ALL OBJ
+export async function Update_statut(id_task, task_update, id) {
+    if (task_ai.length != 0) {
+        const task = task_ai.find(task => task.id === id_task && task.projectId === id)
+        if (task.length != 0) {
+            task.status = task_update;
+            console.log(task);
+            localStorage.setItem("task_ai", JSON.stringify(task_ai));
+        } else {
+            console.log("il n'a pas cette task maintenant, il doit virifier.");
+            return "il n'a pas cette task maintenant, il doit virifier.";
+        }
+    }
+}
